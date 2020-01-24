@@ -1,38 +1,48 @@
 const db = require('../data/db-config')
 
-function getRecipes() {
-    return db('recipes')
+function getProjects() {
+    return db('projects')
 }
 
-function getShoppingList(id) {
-    return db("ingredients").join(
-        "ingredients_needed",
-        "ingredients_needed.ingredient_id",
-        "=",
-        "ingredients.id"
-      ).where({recipe_id:id}).select('ingredients.name', 'ingredient_quantity')
+function getRessources() {
+    return db('ressources')
   }
 
-
-/*
-SQL:
-
-select ingredients.name, ingredient_quantity
-from ingredients_needed
-join ingregdients
-on ingredients_needed.ingredient_id = ingredients.id
-where recipe_id = 2;
-
-order_by desc asc
-
-*/
-
-function getInstructions(id) {
-    return db('instructions').where({recipe_id: id})
+function getTasksById(id) {
+    return db('tasks')
+    .join('projects', 'tasks.project_id', '=', 'projects.id')
+    .where({project_id: id})
+    .select('tasks.description as task_description', 'projects.name as project_name', 'projects.description as project_description', 'tasks.completed')
 }
 
+function getTasks() {
+    return db('tasks')
+    .join('projects', 'tasks.project_id', '=', 'projects.id')
+    .select('tasks.description as task_description', 'projects.name as project_name', 'projects.description as project_description', 'tasks.completed')
+}
+
+function addRessource({name, description}) {
+    return db('ressources')
+    .insert({name, description})
+}
+
+function addProject({name, description}) {
+    return db('projects')
+    .insert({name, description})
+}
+
+function addTask({project_id, description, notes}) {
+    return db('tasks')
+    .insert({project_id, description, notes})
+}
+
+
 module.exports = {
-    getRecipes,
-    getShoppingList,
-    getInstructions
+    getProjects,
+    getRessources,
+    getTasksById,
+    addRessource,
+    addProject,
+    addTask,
+    getTasks
   }
