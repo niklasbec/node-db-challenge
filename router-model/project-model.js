@@ -36,6 +36,11 @@ function addTask({project_id, description, notes}) {
     .insert({project_id, description, notes})
 }
 
+function removeRessource(id) {
+    return db('ressources').where({id}).del()
+}
+
+
 
 module.exports = {
     getProjects,
@@ -44,5 +49,6 @@ module.exports = {
     addRessource,
     addProject,
     addTask,
-    getTasks
+    getTasks,
+    removeRessource
   }

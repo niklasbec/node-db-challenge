@@ -85,4 +85,18 @@ router.get('/', (req, res) => {
     });
   });
 
+  router.delete('/ressource/:id', (req, res) => {
+      const {id} = req.params
+
+      ProjectDB.removeRessource(id)
+        .then(ressource => {
+            res.status(201).json(ressource)
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Failed to delete ressource'
+            })
+        })
+  })
+
 module.exports = router;
