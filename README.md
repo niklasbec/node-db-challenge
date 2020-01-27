@@ -1,6 +1,6 @@
 # Sprint Challenge: Node DB Sprint
 
-## Description
+## Descriptionn
 
 In this challenge, you design and build a Data Model and a RESTful API that stores data into a Relational Database.
 
@@ -38,13 +38,22 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Explain the difference between `Relational Databases` and `SQL`.
+- [X] Explain the difference between `Relational Databases` and `SQL`.
 
-- [ ] Why do tables need a `primary key`?
+Uh weird question, a Relational Database is a type of Database with data that is ordered in tables which are connected to each other. SQL is a database language used to create Relational Databases.
 
-- [ ] What is the name given to a table column that references the primary key on another table.
 
-- [ ] What do we need in order to have a _many to many_ relationship between two tables.
+- [X] Why do tables need a `primary key`?
+
+It uniquely indentifies each record of a dataset
+
+- [X] What is the name given to a table column that references the primary key on another table.
+
+Foreign key
+
+- [X] What do we need in order to have a _many to many_ relationship between two tables.
+
+A third table that takes primary keys of two other tables
 
 ## Minimum Viable Product
 
